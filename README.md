@@ -12,7 +12,7 @@ Weitere Skripte prüfen die Datenqualität und werten den Bestand aus.
 | 1 | `verbindung.py` | Testet die Verbindung zu MongoDB Atlas: Ping, Testdokument einfügen, lesen und wieder löschen |
 | 2 | `daten_abrufen.py` | Fragt die API für Berlin, München, Hamburg, Frankfurt und Karlsruhe ab (Vollzeit, je 2 Ergebnisseiten), übernimmt die relevanten Felder und speichert jede Stelle per Upsert auf `job_id` |
 | 3 | `qualitaetscheck.py` | Zählt die Dokumente gesamt und pro Stadt und prüft, ob jede `job_id` nur einmal vorkommt |
-| 4 | `analyse.py` | Auswertungen: Stellen pro Stadt, Mindestgehalt über 50.000, „Manager“ im Titel, Top 5 Arbeitgeber per Aggregation, Remote gegen vor Ort |
+| 4 | `analyse.py` | Auswertungen: Stellen gesamt und in Berlin, Mindestgehalt über 50.000, „Manager“ im Titel, Top 5 Arbeitgeber per Aggregation, Remote gegen vor Ort |
 | optional | `aufraeumen.py` | **Löscht alle Dokumente der Collection** ohne Rückfrage. Nur für einen kompletten Neustart gedacht. |
 
 ## Warum Upsert
@@ -32,7 +32,7 @@ damit sich die Ergebnisse später nach der Suchstadt filtern lassen.
 ## Selbst ausführen
 
 1. Abhängigkeiten installieren: `pip install -r requirements.txt`
-2. `.env.example` in `.env` umbenennen und eigene Zugangsdaten eintragen
+2. `.env.example` kopieren, die Kopie `.env` nennen und eigene Zugangsdaten eintragen
    (MongoDB-Connection-String und RapidAPI-Schlüssel für JSearch)
 3. Skripte in der Reihenfolge der Tabelle oben starten, z. B. `python daten_abrufen.py`
 
